@@ -14,7 +14,7 @@ services:
     deploy:
       replicas: 1
       labels:
-        - traefik.frontend.rule=Host:${DOMAIN}
+        - traefik.frontend.rule=Host:portfolio-hook.${DOMAIN}
         - traefik.enable=true
         - traefik.port=8555
         - traefik.tags=traefik-public
