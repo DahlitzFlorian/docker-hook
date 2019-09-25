@@ -1,5 +1,7 @@
 FROM python:3.7-alpine
 
+EXPOSE 8555
+
 RUN mkdir /app
 WORKDIR /app
 
