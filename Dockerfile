@@ -6,6 +6,8 @@ WORKDIR /app
 RUN pip install --upgrade pip
 RUN pip install requests
 
-COPY docker-hook.py docker-hook.py
+COPY docker-hook docker-hook
 
-CMD ["python", "docker-hook.py", "-t", $TOKEN, "-c", "sh", "/app/.deploy.sh"]
+RUN chmod +x docker-hook
+
+CMD ["docker-hook", "-t", $TOKEN, "-c", "sh", "/app/.deploy.sh"]
