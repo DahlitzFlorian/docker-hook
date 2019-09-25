@@ -10,4 +10,4 @@ COPY docker-hook docker-hook
 
 RUN chmod +x docker-hook
 
-CMD ["docker-hook", "-t", $TOKEN, "-c", "sh", "/app/.deploy.sh"]
+CMD docker-hook -t $TOKEN -c sh /app/.deploy.sh
