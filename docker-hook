@@ -33,9 +33,13 @@ class RequestHandler(BaseHTTPRequestHandler):
         env = dict(os.environ)
         json_params = {}
         if len(json_payload) > 0:
-            json_params = json.loads(json_payload.decode('utf-8'))
-            env.update(('REPOSITORY_' + var.upper(), str(val))
+            try:
+                json_params = json.loads(json_payload.decode('utf-8'))
+                env.update(('REPOSITORY_' + var.upper(), str(val))
                        for var, val in json_params['repository'].items())
+            except:
+                 # If not JSON encoded, this is not a problem and should not fail
+                pass
 
         # Check if the secret URL was called
         token = args.token or os.environ.get("DOCKER_AUTH_TOKEN")
