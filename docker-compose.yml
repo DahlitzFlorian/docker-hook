@@ -7,6 +7,10 @@ services:
     networks:
       - default
       - traefik-public
+    volumes:
+      - type: bind
+        source: ../.deploy.sh
+        target: /app/.deploy.sh
     deploy:
       replicas: 1
       labels:

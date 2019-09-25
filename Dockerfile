@@ -8,4 +8,4 @@ RUN pip install requests
 
 COPY docker-hook.py docker-hook.py
 
-CMD ["python", "docker-hook.py", "-t", $TOKEN, "-c", "sh", "./deploy.sh"]
+CMD ["python", "docker-hook.py", "-t", $TOKEN, "-c", "sh", "/app/.deploy.sh"]
